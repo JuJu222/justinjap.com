@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
   	extend: {
+      animation: {
+        ping2s: 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
