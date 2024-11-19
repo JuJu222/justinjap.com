@@ -1,6 +1,8 @@
 import FadeUp from '@/components/animations/fade-up';
 import ProjectCard from './_components/project-card';
 import Footer from './_components/footer';
+import { FileUser } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -19,6 +21,22 @@ export default function Home() {
           <p className='text-lg text-gray-500'>
             I&apos;m a software engineer who loves to build things that help people.
           </p>
+        </FadeUp>
+        <FadeUp delay={0.8} className='flex gap-4'>
+          <Link
+            href='/resume'
+            className='flex font-medium items-center gap-2 p-0 h-fit text-sm hover:bg-transparent border-b-2 pb-1 hover:border-primary border-transparent rounded-none transition [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0'
+          >
+            <FileUser />
+            Resume
+          </Link>
+          <Link
+            href='/contact'
+            className='flex font-medium items-center gap-2 p-0 h-fit text-sm hover:bg-transparent border-b-2 pb-1 hover:border-primary border-transparent rounded-none transition [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0'
+          >
+            <FileUser />
+            Resume
+          </Link>
         </FadeUp>
       </div>
       <FadeUp delay={0.3} className='w-full max-w-6xl' enableInView>
