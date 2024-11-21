@@ -8,7 +8,7 @@ interface FadeInProps {
   delay?: number;
   className?: string;
   enableInView?: boolean;
-  direction?: 'up' | 'left' | 'right';
+  direction?: 'up' | 'down' | 'left' | 'right';
 }
 
 export default function FadeIn({ children, delay = 0, className, enableInView = false, direction = 'up' }: FadeInProps) {
@@ -18,7 +18,9 @@ export default function FadeIn({ children, delay = 0, className, enableInView = 
   const initialAnimation = {
     opacity: 0,
     ...(direction === 'up' 
-      ? { y: 20 } 
+      ? { y: 20 }
+      : direction === 'down'
+        ? { y: -20 }
       : direction === 'right' 
         ? { x: 20 }
         : { x: -20 }
@@ -27,7 +29,7 @@ export default function FadeIn({ children, delay = 0, className, enableInView = 
 
   const finalAnimation = {
     opacity: 1,
-    ...(direction === 'up' 
+    ...(direction === 'up' || direction === 'down'
       ? { y: 0 } 
       : { x: 0 }
     )
