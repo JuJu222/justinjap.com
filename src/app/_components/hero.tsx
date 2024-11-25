@@ -10,14 +10,14 @@ import Circle from '@/components/animations/circle';
 function hero() {
   return (
     <div className='h-dvh flex flex-col items-center justify-center'>
-      <div className='h-[184px] w-full mt-6' />
+      <div className='h-[160px] w-full mt-6' />
       <div className='flex items-center gap-20 justify-center'>
         <div className='flex flex-col gap-2'>
           <FadeIn>
-            <h1 className='text-4xl font-bold'>Hello, my name is</h1>
+            <h1 className='text-4xl font-bold text-foreground-gradient'>Hello, my name is</h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <h1 className='text-6xl font-bold text-primary'>Justin Jap</h1>
+            <h1 className='text-6xl font-bold text-primary-gradient'>Justin Jap</h1>
           </FadeIn>
           <FadeIn delay={0.4}>
             <p>Founder of Walletize, Front end developer at Unit Network</p>
@@ -49,48 +49,48 @@ function hero() {
         </FadeIn>
       </div>
       <FadeIn delay={1} direction='down' className='grid grid-cols-7 gap-2 mt-6'>
-        <Circle delay={0} repeatDelay={0} animate={false} />
-        <Circle delay={1} repeatDelay={5} />
-        <Circle delay={0.5} repeatDelay={5} />
-        <Circle delay={0} repeatDelay={5} />
-        <Circle delay={0.5} repeatDelay={5} />
-        <Circle delay={1} repeatDelay={5} />
-        <Circle delay={0} repeatDelay={0} animate={false} />
-        <Circle delay={0} repeatDelay={0} animate={false} />
-        <Circle delay={1.5} repeatDelay={5} />
-        <Circle delay={1} repeatDelay={5} />
-        <Circle delay={0.5} repeatDelay={5} />
-        <Circle delay={1} repeatDelay={5} />
-        <Circle delay={1.5} repeatDelay={5} />
-        <Circle delay={0} repeatDelay={0} animate={false} />
-        <Circle delay={0} repeatDelay={0} animate={false} />
-        <Circle delay={2} repeatDelay={5} />
-        <Circle delay={1.5} repeatDelay={5} />
-        <Circle delay={1} repeatDelay={5} />
-        <Circle delay={1.5} repeatDelay={5} />
-        <Circle delay={2} repeatDelay={5} />
-        <Circle delay={0} repeatDelay={0} animate={false} />
-        <Circle delay={0} repeatDelay={0} animate={false} />
-        <Circle delay={2.5} repeatDelay={5} />
-        <Circle delay={2} repeatDelay={5} />
-        <Circle delay={1.5} repeatDelay={5} />
-        <Circle delay={2} repeatDelay={5} />
-        <Circle delay={2.5} repeatDelay={5} />
-        <Circle delay={0} repeatDelay={0} animate={false} />
-        <Circle delay={0} repeatDelay={0} animate={false} />
-        <Circle delay={3} repeatDelay={5} />
-        <Circle delay={2.5} repeatDelay={5} />
-        <Circle delay={2} repeatDelay={5} />
-        <Circle delay={2.5} repeatDelay={5} />
-        <Circle delay={3} repeatDelay={5} />
-        <Circle delay={0} repeatDelay={0} animate={false} />
-        <Circle delay={0} repeatDelay={0} animate={false} />
-        <Circle delay={3.5} repeatDelay={5} />
-        <Circle delay={3} repeatDelay={5} />
-        <Circle delay={2.5} repeatDelay={5} />
-        <Circle delay={3} repeatDelay={5} />
-        <Circle delay={3.5} repeatDelay={5} />
-        <Circle delay={0} repeatDelay={0} animate={false} />
+        <Circle delay={0} animate={false} />
+        <Circle delay={0.5} />
+        <Circle delay={0.25} />
+        <Circle delay={0} />
+        <Circle delay={0.25} />
+        <Circle delay={0.5} />
+        <Circle delay={0} animate={false} />
+        <Circle delay={0} animate={false} />
+        <Circle delay={0.75} />
+        <Circle delay={0.5} />
+        <Circle delay={0.25} />
+        <Circle delay={0.5} />
+        <Circle delay={0.75} />
+        <Circle delay={0} animate={false} />
+        <Circle delay={0} animate={false} />
+        <Circle delay={1} />
+        <Circle delay={0.75} />
+        <Circle delay={0.5} />
+        <Circle delay={0.75} />
+        <Circle delay={1} />
+        <Circle delay={0} animate={false} />
+        <Circle delay={0} animate={false} />
+        <Circle delay={1.25} />
+        <Circle delay={1} />
+        <Circle delay={0.75} />
+        <Circle delay={1} />
+        <Circle delay={1.25} />
+        <Circle delay={0} animate={false} />
+        <Circle delay={0} animate={false} />
+        <Circle delay={1.5} />
+        <Circle delay={1.25} />
+        <Circle delay={1} />
+        <Circle delay={1.25} />
+        <Circle delay={1.5} />
+        <Circle delay={0} animate={false} />
+        <Circle delay={0} animate={false} />
+        <Circle delay={1.75} />
+        <Circle delay={1.5} />
+        <Circle delay={1.25} />
+        <Circle delay={1.5} />
+        <Circle delay={1.75} />
+        <Circle delay={0} animate={false} />
       </FadeIn>
     </div>
   );

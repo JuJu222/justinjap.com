@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-function Circle({ delay, repeatDelay, animate = true }: { delay: number, repeatDelay: number, animate?: boolean }) {
+function Circle({ delay, animate = true }: { delay: number, animate?: boolean }) {
   return (
-    <div className='size-6 border border-gray-100 rounded-full relative'>
+    <div className='size-5 rounded-full relative'>
       <motion.div
         className='absolute w-full h-full rounded-full'
         initial={animate ? { scale: 0, opacity: 0 } : { scale: 1, opacity: 1 }}
@@ -24,11 +24,11 @@ function Circle({ delay, repeatDelay, animate = true }: { delay: number, repeatD
         transition={
           animate
             ? {
-                duration: 1,
+                duration: 0.5,
                 times: [0, 0.2, 0.6, 1],
                 repeat: Infinity,
-                repeatType: 'reverse',
-                repeatDelay: 2,
+                repeatType: 'loop',
+                repeatDelay: 1.5,
                 delay: delay,
               }
             : {}
