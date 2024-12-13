@@ -15,7 +15,7 @@ function Timeline() {
 
   return (
     <FadeIn delay={0.3} className='w-full max-w-6xl mt-40' enableInView>
-      <h2 className='text-4xl font-bold text-primary'>My Timeline</h2>
+      <h2 className='text-4xl font-bold text-primary-gradient'>My Timeline</h2>
       <p className='text-gray-500 text-base'>My professional journey in software development.</p>
       <div className='relative container mx-auto mt-8 overflow-x-auto pt-4 no-scrollbar scroll-smooth' ref={ref}>
         <div className='relative flex justify-between'>

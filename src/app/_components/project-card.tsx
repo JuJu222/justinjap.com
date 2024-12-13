@@ -2,6 +2,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import React from 'react';
 import Image from 'next/image';
+import NextJsIcon from '@/public/icons/nextjs.svg';
+import TailwindIcon from '@/public/icons/tailwind.svg';
 
 function ProjectCard() {
   return (
@@ -14,6 +16,10 @@ function ProjectCard() {
       <CardContent>
         <CardTitle>Create project</CardTitle>
         <CardDescription>Deploy your new project in one-click.</CardDescription>
+        <div className='flex items-center gap-2'>
+          <Image src={TailwindIcon} alt='tailwind' width={20} height={20} />
+          <Image src={NextJsIcon} alt='next' width={20} height={20} />
+        </div>
       </CardContent>
       <CardFooter className='flex justify-between'>
         <Button variant='outline'>Cancel</Button>

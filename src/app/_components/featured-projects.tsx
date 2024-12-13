@@ -8,7 +8,7 @@ import Link from 'next/link';
 function FeaturedProjects() {
   return (
     <FadeIn delay={0.3} className='w-full max-w-6xl mt-20' enableInView>
-      <h2 className='text-4xl font-bold text-primary'>Featured Projects</h2>
+      <h2 className='text-4xl font-bold text-primary-gradient'>Featured Projects</h2>
       <p className='text-gray-500 text-base'>Some of my projects that I&apos;m proud of.</p>
       <div className='grid grid-cols-3 gap-4 mt-4'>
         <ProjectCard />
