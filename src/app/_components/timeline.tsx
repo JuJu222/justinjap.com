@@ -2,6 +2,7 @@
 
 import FadeIn from '@/components/animations/fade-in';
 import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { ChevronLeft } from 'lucide-react';
 import { ChevronRight } from 'lucide-react';
 import React, { useRef } from 'react';
@@ -19,15 +20,22 @@ function Timeline() {
       <p className='text-gray-500 text-base'>My professional journey in software development.</p>
       <div className='relative container mx-auto mt-8 overflow-x-auto pt-4 no-scrollbar scroll-smooth' ref={ref}>
         <div className='relative flex justify-between'>
-          <div className='relative flex flex-col items-center'>
-            <div className='w-4 h-4 bg-primary rounded-full z-10 animate-ping2s'></div>
-            <div className='w-4 h-4 bg-primary rounded-full z-10 absolute'></div>
-            <div className='absolute top-[7px] h-0.5 bg-gray-200 w-1/2 left-1/2'></div>
-            <div className='w-64 text-center'>
-              <p className='font-semibold'>Present</p>
-              <p>Continuing the journey...</p>
-            </div>
-          </div>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className='relative flex flex-col items-center'>
+                <div className='w-4 h-4 bg-primary rounded-full z-10 animate-ping2s'></div>
+                <div className='w-4 h-4 bg-primary rounded-full z-10 absolute'></div>
+                <div className='absolute top-[7px] h-0.5 bg-gray-200 w-1/2 left-1/2'></div>
+                <div className='w-64 text-center'>
+                  <p className='font-semibold'>Present</p>
+                  <p>Continuing the journey...</p>
+                </div>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent className='bg-background text-foreground shadow'>
+              <p>Add to library</p>
+            </TooltipContent>
+          </Tooltip>
           <div className='relative flex flex-col items-center'>
             <div className='w-4 h-4 bg-primary rounded-full z-10'></div>
             <div className='absolute top-[7px] h-0.5 bg-gray-200 w-full'></div>

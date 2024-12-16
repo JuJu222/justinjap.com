@@ -3,7 +3,9 @@ import Footer from './_components/footer';
 import Hero from './_components/hero';
 import Timeline from './_components/timeline';
 import FeaturedProjects from './_components/featured-projects';
+import Awards from './_components/awards';
 import Image from 'next/image';
+
 export default function Home() {
   return (
     <div className='flex flex-col items-center justify-center px-8'>
@@ -37,6 +39,7 @@ export default function Home() {
       </FadeUp>
       <Timeline />
       <FeaturedProjects />
+      <Awards />
       <Footer />
     </div>
   );
