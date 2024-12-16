@@ -2,6 +2,10 @@
   "name": "justinjap.com",
   "version": "0.1.0",
   "private": true,
+  "prisma": {
+    "schema": "src/prisma/schema.prisma",
+    "seed": "npx tsx src/prisma/seeders/seed.ts"
+  },
   "scripts": {
     "dev": "next dev --turbopack -p 3222",
     "build": "next build",
