@@ -12,7 +12,7 @@ import GithubIcon from '@/public/icons/github.svg';
 function hero() {
   return (
     <div className='h-dvh flex flex-col items-center justify-center'>
-      <div className='h-[160px] w-full mt-6' />
+      <div className='min-h-[160px] w-full mt-6' />
       <div className='flex items-center gap-8 md:gap-20 justify-center flex-col md:flex-row'>
         <div className='flex flex-col gap-2'>
           <FadeIn>

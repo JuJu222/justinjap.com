@@ -1,8 +1,12 @@
 import { Metadata } from 'next';
 import { projects } from '@/lib/constants';
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const project = projects.find(p => p.id === params.id);
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const project = projects.find(async (p) => p.id === (await params).id);
   
   return {
     title: project ? `${project.title} | justinjap.com` : 'Project | justinjap.com',
