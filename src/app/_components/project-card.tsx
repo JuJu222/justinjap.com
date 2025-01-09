@@ -1,31 +1,44 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import React from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { Project } from '@/lib/constants';
 import Image from 'next/image';
-import NextJsIcon from '@/public/icons/nextjs.svg';
-import TailwindIcon from '@/public/icons/tailwind.svg';
+import Link from 'next/link';
 
-function ProjectCard() {
+function ProjectCard({
+  project,
+}: {
+  project: Project;
+}) {
   return (
-    <Card className='w-full hover:shadow-lg transition-shadow duration-300 cursor-pointer'>
-      <CardHeader className='p-0 pb-6'>
-        <div className='relative w-full h-52 rounded-t-xl overflow-hidden border-b-8 border-primary'>
-          <Image src='/images/walletize.png' alt='hero' fill className='object-cover' />
-        </div>
-      </CardHeader>
-      <CardContent>
-        <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
-        <div className='flex items-center gap-2'>
-          <Image src={TailwindIcon} alt='tailwind' width={20} height={20} />
-          <Image src={NextJsIcon} alt='next' width={20} height={20} />
-        </div>
-      </CardContent>
-      <CardFooter className='flex justify-between'>
-        <Button variant='outline'>Cancel</Button>
-        <Button>Deploy</Button>
-      </CardFooter>
-    </Card>
+    <Link href={`/projects/${project.id}`}>
+      <Card className='w-full hover:shadow-lg transition-shadow duration-300 cursor-pointer'>
+        <CardHeader className='p-0 pb-6'>
+          <div className='relative w-full h-52 rounded-t-xl overflow-hidden border-b-8 border-primary'>
+            <Image src={project.mainImage} alt='hero' fill className='object-cover object-top' />
+          </div>
+        </CardHeader>
+        <CardContent className='space-y-3'>
+          <CardTitle>{project.title}</CardTitle>
+          <CardDescription className='line-clamp-3'>{project.description}</CardDescription>
+          <div className='flex items-center gap-2'>
+            {project.techStack.map((tech) => (
+              <Tooltip key={tech.name} delayDuration={0}>
+                <TooltipTrigger>
+                  <Image src={tech.icon} alt={tech.name} width={tech.size} height={tech.size} />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{tech.name}</p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
+          </div>
+        </CardContent>
+        {/* <CardFooter className='flex justify-between'>
+          <Button variant='outline'>Cancel</Button>
+          <Button>Deploy</Button>
+        </CardFooter> */}
+      </Card>
+    </Link>
   );
 }
 
