@@ -19,9 +19,10 @@ function AboutMe() {
         <div className='w-full md:w-2/3 space-y-4'>
           <h2 className='text-3xl md:text-4xl font-bold text-primary-gradient'>About Me</h2>
           <p className='text-sm md:text-base text-gray-500 leading-relaxed'>
-            Hi there! I&apos;m a passionate software developer with a love for creating solutions to complex
-            problems. Currently, I work as a Full Stack Developer at Unit Network. I graduated in 2024 with a Bachelor of Science in Computer Science (Informatics), achieving a GPA
-            of 3.98 and being awarded Best Academic Student for attaining the highest GPA in my batch.
+            Hi there! I&apos;m a passionate software developer with a love for creating solutions to complex problems.
+            Currently, I work as a Full Stack Developer at Unit Network. I graduated in 2024 with a Bachelor of Science
+            in Computer Science (Informatics), achieving a GPA of 3.98 and being awarded Best Academic Performance for
+            attaining the highest GPA in my batch.
           </p>
           <p className='text-sm md:text-base text-gray-500 leading-relaxed'>
             I have a deep love for developing applications, especially web apps. While I have also delved into mobile
@@ -29,7 +30,8 @@ function AboutMe() {
             development. I enjoy building projects that can make a tangible difference in people&apos;s lives.
           </p>
           <p className='text-sm md:text-base text-gray-500 leading-relaxed'>
-            When I&apos;m not coding, you can find me exploring new technologies. I&apos;m a firm believer in continuous learning and always excited to discover new ways to solve problems by technology.
+            When I&apos;m not coding, you can find me exploring new technologies. I&apos;m a firm believer in continuous
+            learning and always excited to discover new ways to solve problems by technology.
           </p>
         </div>
       </div>
