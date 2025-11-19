@@ -5,6 +5,7 @@ import Navbar from './_components/navbar';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import Footer from './_components/footer';
 import Script from 'next/script';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -24,9 +25,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <Navbar />
-        <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
+          <Footer />
+        </ThemeProvider>
       </body>
       {/* Umami Analytics */}
       <Script
