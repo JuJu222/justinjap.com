@@ -32,7 +32,7 @@ export default function RootLayout({
       <Script
         defer
         src='https://analytics.justinjap.com/script.js'
-        data-website-id='d79272c6-b160-4b10-80e2-a920b8efb83e'
+        data-website-id='2875d2b3-33c4-4003-8b94-5816d06c6207'
       />
     </html>
   );
