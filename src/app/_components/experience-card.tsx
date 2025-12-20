@@ -41,7 +41,7 @@ export default function ExperienceCard({ experience, index }: { experience: Expe
                 <li key={highlight}>{highlight}</li>
               ))}
             </ul>
-            {experience.projects && (
+            {/* {experience.projects && (
               <div className='space-y-2'>
                 <p className='text-xs uppercase tracking-[0.35em] text-muted-foreground'>Spotlight</p>
                 <div className='grid gap-3 md:grid-cols-2'>
@@ -53,7 +53,7 @@ export default function ExperienceCard({ experience, index }: { experience: Expe
                   ))}
                 </div>
               </div>
-            )}
+            )} */}
             <div className='flex flex-wrap gap-2'>
               {experience.skills.map((skill) => (
                 <span

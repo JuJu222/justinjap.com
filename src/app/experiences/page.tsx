@@ -15,9 +15,9 @@ export default function ExperiencesPage() {
         <div className='space-y-10'>
           <div className='space-y-3'>
             <p className='text-xs uppercase tracking-[0.35em] text-muted-foreground'>Experience</p>
-            <h1 className='text-3xl md:text-4xl font-bold text-primary-gradient'>Professional Lifeline</h1>
+            <h1 className='text-3xl md:text-4xl font-bold text-primary-gradient'>My Journey So Far</h1>
             <p className='text-muted-foreground text-sm md:text-base max-w-3xl'>
-              These are the teams, classrooms, and ventures where I&apos;ve built, taught, and shipped software at
+              These are the teams and ventures where I&apos;ve built, managed, and shipped software at
               scale. Each stop sharpened my craft and taught me how to shepherd ideas from vision to live product.
             </p>
           </div>

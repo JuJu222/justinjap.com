@@ -15,7 +15,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className='fixed top-2 left-0 right-0 z-50 flex justify-center'>
+    <nav className='fixed top-2 left-2 md:left-0 md:right-0 z-50 flex justify-center'>
       <div className='relative rounded-xl border border-gray-200 dark:border-gray-800 p-1'>
         <GlowingEffect
           blur={0}
@@ -27,7 +27,7 @@ export default function Navbar() {
           inactiveZone={0.01}
         />
         <div className='rounded-xl bg-background/80 backdrop-blur-sm shadow-lg dark:drop-shadow-[0_4px_16px_rgba(255,255,255,0.15)]'>
-          <div className='container flex h-14 items-center justify-between max-w-6xl px-4 md:px-6'>
+          <div className='container flex h-fit md:h-14 items-center justify-between max-w-6x px-0 md:px-6'>
             <div className='hidden items-center gap-4 md:flex'>
               <Button variant='ghost' asChild>
                 <Link href='/'>Home</Link>
@@ -36,7 +36,7 @@ export default function Navbar() {
                 <Link href='/projects'>Projects</Link>
               </Button>
               <Button variant='ghost' asChild>
-                <Link href='/experiences'>Experience</Link>
+                <Link href='/experiences'>Experiences</Link>
               </Button>
               <Button variant='ghost' asChild>
                 <Link
@@ -78,7 +78,7 @@ export default function Navbar() {
                       <Link href='/projects'>Projects</Link>
                     </Button>
                     <Button variant='ghost' asChild onClick={() => setOpen(false)}>
-                      <Link href='/experiences'>Experience</Link>
+                      <Link href='/experiences'>Experiences</Link>
                     </Button>
                     <Button variant='ghost' asChild onClick={() => setOpen(false)}>
                       <Link
@@ -118,7 +118,7 @@ export default function Navbar() {
                       </Button>
                     </div>
                     <div className='flex justify-center mt-4'>
-                      <ThemeToggle />
+                      <ThemeToggle className='w-full' />
                     </div>
                   </div>
                 </SheetContent>

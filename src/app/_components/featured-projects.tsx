@@ -6,7 +6,7 @@ import Link from 'next/link';
 import ProjectCard from './project-card';
 
 function FeaturedProjects() {
-  const featuredProjectIds = ['2', '1', '3'];
+  const featuredProjectIds = ['1', '2', '3'];
   const featuredProjects = featuredProjectIds
     .map((id) => projects.find((project) => project.id === id))
     .filter(Boolean);
