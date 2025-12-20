@@ -2,7 +2,7 @@ import AboutMe from './_components/about-me';
 import Awards from './_components/awards';
 import FeaturedProjects from './_components/featured-projects';
 import Hero from './_components/hero';
-import Timeline from './_components/timeline';
+import CurrentExperience from './_components/current-experience';
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
       <Hero />
       <FeaturedProjects />
       <AboutMe />
-      <Timeline />
+      <CurrentExperience />
       <Awards />
     </div>
   );

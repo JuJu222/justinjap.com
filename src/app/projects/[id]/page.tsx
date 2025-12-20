@@ -9,6 +9,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { DialogClose, DialogTitle } from '@radix-ui/react-dialog';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { GlowingEffect } from '@/components/glowing-effect';
 import Link from 'next/link';
 
 export default function ProjectDetailPage() {
@@ -43,14 +44,25 @@ export default function ProjectDetailPage() {
 
       <FadeIn delay={0.3} className='w-full max-w-6xl' enableInView>
         <div className='space-y-6 md:space-y-8'>
-          <div
-            className='relative w-full h-[300px] md:h-[500px] rounded-xl overflow-hidden border-4 border-primary shadow-lg cursor-pointer hover:shadow-2xl transition duration-500'
-            onClick={() => {
-              setSelectedImage(project.mainImage);
-              setOpen(true);
-            }}
-          >
-            <Image src={project.mainImage} alt={project.title} fill className='object-cover object-top' />
+          <div className='relative w-full h-[300px] md:h-[500px] rounded-2xl border p-2 md:rounded-3xl md:p-3'>
+            <GlowingEffect
+              blur={0}
+              borderWidth={3}
+              spread={80}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+            />
+            <div
+              className='relative w-full h-full rounded-xl overflow-hidden border-b-8 border-primary shadow-lg cursor-pointer hover:shadow-2xl transition duration-500'
+              onClick={() => {
+                setSelectedImage(project.mainImage);
+                setOpen(true);
+              }}
+            >
+              <Image src={project.mainImage} alt={project.title} fill className='object-cover object-top' />
+            </div>
           </div>
 
           <div className='space-y-3 md:space-y-4'>
@@ -69,7 +81,7 @@ export default function ProjectDetailPage() {
                 </div>
               )}
             </div>
-            <p className='text-gray-500 text-base md:text-lg leading-relaxed'>{project.description}</p>
+            <p className='text-muted-foreground text-base md:text-lg leading-relaxed'>{project.description}</p>
           </div>
 
           <div className='space-y-3 md:space-y-4'>
@@ -83,7 +95,7 @@ export default function ProjectDetailPage() {
                       alt={tech.name} 
                       width={tech.size * 1.5} 
                       height={tech.size * 1.5}
-                      className='md:w-[40px] md:h-[40px]' 
+                      className='md:w-[40px] md:h-[40px] dark:brightness-150' 
                     />
                   </TooltipTrigger>
                   <TooltipContent>
