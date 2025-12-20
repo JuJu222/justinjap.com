@@ -16,7 +16,7 @@ function Timeline() {
   return (
     <FadeIn delay={0.3} className='w-full max-w-6xl mt-24 md:mt-36' enableInView>
       <h2 className='text-3xl md:text-4xl font-bold text-primary-gradient'>My Timeline</h2>
-      <p className='text-gray-500 text-sm md:text-base mt-2'>My professional journey in software development.</p>
+      <p className='text-muted-foreground text-sm md:text-base mt-2'>My professional journey in software development.</p>
       <div className='relative container mx-auto mt-8 overflow-x-auto pt-4 no-scrollbar scroll-smooth' ref={ref}>
         <div className='relative flex justify-between min-w-max px-4 md:px-0'>
           {timelineData.map((item, index) => (

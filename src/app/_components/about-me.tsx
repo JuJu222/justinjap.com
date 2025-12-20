@@ -15,7 +15,7 @@ function AboutMe() {
         <div className='w-full md:w-2/3 space-y-4'>
           <h2 className='text-3xl md:text-4xl font-bold text-primary-gradient'>About Me</h2>
           {aboutMeData.paragraphs.map((paragraph, index) => (
-            <p key={index} className='text-sm md:text-base text-gray-500 leading-relaxed'>
+            <p key={index} className='text-sm md:text-base text-muted-foreground leading-relaxed'>
               {paragraph}
             </p>
           ))}

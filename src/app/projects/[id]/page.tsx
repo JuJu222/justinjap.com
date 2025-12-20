@@ -69,7 +69,7 @@ export default function ProjectDetailPage() {
                 </div>
               )}
             </div>
-            <p className='text-gray-500 text-base md:text-lg leading-relaxed'>{project.description}</p>
+            <p className='text-muted-foreground text-base md:text-lg leading-relaxed'>{project.description}</p>
           </div>
 
           <div className='space-y-3 md:space-y-4'>
@@ -83,7 +83,7 @@ export default function ProjectDetailPage() {
                       alt={tech.name} 
                       width={tech.size * 1.5} 
                       height={tech.size * 1.5}
-                      className='md:w-[40px] md:h-[40px]' 
+                      className='md:w-[40px] md:h-[40px] dark:brightness-150' 
                     />
                   </TooltipTrigger>
                   <TooltipContent>
