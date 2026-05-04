@@ -1,0 +1,97 @@
+name: Docker image
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: ${{ github.repository }}
+  REGISTRIES: |
+    ghcr.io
+    registry1.justinjap.com
+    registry2.justinjap.com
+
+jobs:
+  docker:
+    name: Build and push
+    runs-on: ubuntu-24.04-arm
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        if: github.event_name != 'pull_request' && contains(env.REGISTRIES, 'ghcr.io')
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Log in to private registries
+        if: github.event_name != 'pull_request'
+        shell: bash
+        env:
+          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+        run: |
+          while IFS= read -r registry; do
+            if [ -z "$registry" ] || [ "$registry" = "ghcr.io" ]; then
+              continue
+            fi
+
+            echo "$REGISTRY_PASSWORD" | docker login "$registry" \
+              --username "$REGISTRY_USERNAME" \
+              --password-stdin
+          done <<< "$REGISTRIES"
+
+      - name: Prepare image names
+        id: images
+        shell: bash
+        run: |
+          {
+            echo "images<<EOF"
+            while IFS= read -r registry; do
+              if [ -n "$registry" ]; then
+                echo "${registry%/}/${IMAGE_NAME}"
+              fi
+            done <<< "$REGISTRIES"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ steps.images.outputs.images }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha,prefix=sha-
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/arm64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
