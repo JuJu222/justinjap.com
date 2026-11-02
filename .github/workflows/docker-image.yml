@@ -18,6 +18,22 @@ env:
     registry1.justinjap.com
 
 jobs:
+  audit:
+    name: Audit dependencies
+    runs-on: ubuntu-24.04-arm
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Run pnpm audit
+        run: pnpm audit --audit-level=high
+
   docker:
     name: Build and push
     runs-on: ubuntu-24.04-arm

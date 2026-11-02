@@ -1,0 +1,3 @@
+# next pins postcss 8.4.31, which has high-severity advisories.
+overrides:
+  next>postcss: ^8.5.32
