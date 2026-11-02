@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: project ? `${project.title} | justinjap.com` : 'Project | justinjap.com',
-    description: project?.description || 'Full Stack Developer passionate about building impactful software solutions.',
+    description: project?.description || 'Full Stack Engineer passionate about building impactful software solutions.',
   };
 }
 

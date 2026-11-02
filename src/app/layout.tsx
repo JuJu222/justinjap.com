@@ -20,10 +20,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Justin Jap',
-  description: 'Full Stack Developer passionate about building impactful software solutions.',
+  description: 'Full Stack Engineer passionate about building impactful software solutions.',
   openGraph: {
     title: 'Justin Jap',
-    description: 'Full Stack Developer passionate about building impactful software solutions.',
+    description: 'Full Stack Engineer passionate about building impactful software solutions.',
     url: 'https://justinjap.com',
     siteName: 'Justin Jap',
     images: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Justin Jap',
-    description: 'Full Stack Developer passionate about building impactful software solutions.',
+    description: 'Full Stack Engineer passionate about building impactful software solutions.',
     images: ['https://d249xjcvkuj8xb.cloudfront.net/justinjap.com/me.jpg'],
   },
 };
@@ -56,7 +56,7 @@ export default function RootLayout({
     url: 'https://justinjap.com',
     image: 'https://d249xjcvkuj8xb.cloudfront.net/justinjap.com/me.jpg',
     sameAs: ['https://www.linkedin.com/in/justinjap', 'https://github.com/JuJu222'],
-    jobTitle: 'Full Stack Developer',
+    jobTitle: 'Full Stack Engineer',
     worksFor: {
       '@type': 'Organization',
       name: 'Unit Network',

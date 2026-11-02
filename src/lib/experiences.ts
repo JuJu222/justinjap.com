@@ -21,7 +21,7 @@ export interface ExperienceEntry {
 export const experiences: ExperienceEntry[] = [
   {
     id: 'unit-network',
-    role: 'Full Stack Developer',
+    role: 'Full Stack Engineer',
     company: 'Unit Network',
     contract: 'Contract',
     dateRange: 'Aug 2024 — Present',
