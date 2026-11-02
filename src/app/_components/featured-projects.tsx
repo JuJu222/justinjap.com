@@ -1,35 +1,39 @@
-import FadeIn from '@/components/animations/fade-in';
-import { Button } from '@/components/ui/button';
-import { projects } from '@/lib/constants';
-import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import Reveal from '@/components/animations/reveal';
+import SectionHeading from '@/components/section-heading';
+import { buttonVariants } from '@/components/ui/button';
+import { projects } from '@/lib/constants';
 import ProjectCard from './project-card';
 
+const featuredProjectIds = ['1', '2', '3'];
+
 function FeaturedProjects() {
-  const featuredProjectIds = ['1', '2', '3'];
   const featuredProjects = featuredProjectIds
     .map((id) => projects.find((project) => project.id === id))
-    .filter(Boolean);
+    .filter((project) => project !== undefined);
 
   return (
-    <FadeIn delay={0.3} className='w-full max-w-6xl mt-12' enableInView>
-      <h2 className='text-3xl md:text-4xl font-bold text-primary-gradient'>Featured Projects</h2>
-      <p className='text-muted-foreground text-sm md:text-base mt-2'>Some of my works that I&apos;m proud of.</p>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4'>
-        {featuredProjects.map((project) => {
-          if (!project) return null;
-          return <ProjectCard key={project.id} project={project} />;
-        })}
+    <section className='border-t border-border bg-surface/40'>
+      <div className='mx-auto max-w-6xl px-4 py-24 sm:px-6 sm:py-32'>
+        <SectionHeading
+          eyebrow='Projects'
+          title='Things I’ve built and shipped.'
+          description='Some of my works that I’m proud of, from personal products to client launches.'
+        />
+        <ul className='mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
+          {featuredProjects.map((project, i) => (
+            <ProjectCard key={project.id} project={project} index={i} />
+          ))}
+        </ul>
+        <Reveal delay={0.16} className='mt-10 flex justify-center'>
+          <Link href='/projects' className={buttonVariants({ variant: 'outline', size: 'lg' })}>
+            View all projects
+            <ArrowRight className='text-muted-foreground' />
+          </Link>
+        </Reveal>
       </div>
-      <div className='flex justify-center mt-6 md:mt-8'>
-        <Link href='/projects'>
-          <Button variant='outline' className='text-sm md:text-md [&_svg]:size-4 md:[&_svg]:size-5 py-4 md:py-6'>
-            <ExternalLink />
-            View All Projects
-          </Button>
-        </Link>
-      </div>
-    </FadeIn>
+    </section>
   );
 }
 

@@ -1,38 +1,45 @@
-'use client';
-
-import React from 'react';
+import PageHero from '@/components/page-hero';
+import SectionHeading from '@/components/section-heading';
 import ProjectCard from '@/app/_components/project-card';
-import FadeIn from '@/components/animations/fade-in';
 import { projects } from '@/lib/constants';
 
-export default function ProjectsPage() {
-  const workProjects = projects.filter(project => project.type === 'work');
-  const personalProjects = projects.filter(project => project.type === 'personal');
+const groups = [
+  {
+    eyebrow: 'Personal',
+    title: 'Founded and built by me.',
+    description: 'Products I started on my own, from the first idea to running them in production.',
+    type: 'personal',
+  },
+  {
+    eyebrow: 'Work',
+    title: 'Shipped on the job.',
+    description: 'Projects I’ve worked on professionally with designers and engineers on the team.',
+    type: 'work',
+  },
+] as const;
 
+export default function ProjectsPage() {
   return (
-    <div className='flex flex-col items-center min-h-screen py-28 md:py-32 px-6 md:px-8'>
-      <FadeIn delay={0.3} className='w-full max-w-6xl' enableInView>
-        <div className='space-y-16'>
-          <div>
-            <h1 className='text-3xl md:text-4xl font-bold text-primary-gradient'>My Projects</h1>
-            <p className='text-muted-foreground text-sm md:text-base mt-2'>Projects founded and built by me.</p>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4'>
-              {personalProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
+    <>
+      <PageHero
+        eyebrow='Projects'
+        title='Things I’ve built.'
+        description='A list of my professional works and personal projects.'
+      />
+      {groups.map((group) => (
+        <section key={group.type} className='border-t border-border even:bg-surface/40'>
+          <div className='mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28'>
+            <SectionHeading eyebrow={group.eyebrow} title={group.title} description={group.description} />
+            <ul className='mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
+              {projects
+                .filter((project) => project.type === group.type)
+                .map((project, i) => (
+                  <ProjectCard key={project.id} project={project} index={i} />
+                ))}
+            </ul>
           </div>
-          <div>
-            <h1 className='text-3xl md:text-4xl font-bold text-primary-gradient'>Work Projects</h1>
-            <p className='text-muted-foreground text-sm md:text-base mt-2'>Projects I&apos;ve worked on professionally.</p>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4'>
-              {workProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </FadeIn>
-    </div>
+        </section>
+      ))}
+    </>
   );
 }

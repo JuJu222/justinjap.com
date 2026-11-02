@@ -84,6 +84,19 @@ export const timelineData: TimelineItem[] = [
   },
 ];
 
+export interface AwardItem {
+  title: string;
+  issuer: string;
+  year: string;
+}
+
+export const awardsData: AwardItem[] = [
+  { title: 'Best Academic Performance (Highest GPA in the Batch)', issuer: 'Ciputra University', year: '2024' },
+  { title: 'Most Active Leader in Student Organization', issuer: 'Ciputra University', year: '2024' },
+  { title: 'Swift Student Challenge Winner', issuer: 'Apple WWDC', year: '2023' },
+  { title: '1st Place in Mobile App Competition', issuer: 'LO Kreatif', year: '2023' },
+];
+
 export const aboutMeData = {
   image: 'https://d249xjcvkuj8xb.cloudfront.net/justinjap.com/me.jpg',
   paragraphs: [

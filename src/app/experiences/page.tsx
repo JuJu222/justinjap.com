@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { experiences } from '@/lib/experiences';
-import FadeIn from '@/components/animations/fade-in';
+import Reveal from '@/components/animations/reveal';
+import PageHero from '@/components/page-hero';
+import { cn } from '@/lib/utils';
 import ExperienceCard from '../_components/experience-card';
 
 export const metadata: Metadata = {
@@ -10,25 +12,38 @@ export const metadata: Metadata = {
 
 export default function ExperiencesPage() {
   return (
-    <div className='flex flex-col items-center min-h-screen py-28 md:py-32 px-6 md:px-8'>
-      <FadeIn delay={0.3} className='w-full max-w-6xl' enableInView>
-        <div className='space-y-10'>
-          <div className='space-y-3'>
-            <p className='text-xs uppercase tracking-[0.35em] text-muted-foreground'>Experience</p>
-            <h1 className='text-3xl md:text-4xl font-bold text-primary-gradient'>My Journey So Far</h1>
-            <p className='text-muted-foreground text-sm md:text-base max-w-3xl'>
-              These are the teams and ventures where I&apos;ve built, managed, and shipped software at
-              scale. Each stop sharpened my craft and taught me how to shepherd ideas from vision to live product.
-            </p>
-          </div>
-
-          <div className='space-y-8'>
-            {experiences.map((experience, index) => (
-              <ExperienceCard key={experience.id} experience={experience} index={index} />
-            ))}
-          </div>
-        </div>
-      </FadeIn>
-    </div>
+    <>
+      <PageHero
+        eyebrow='Experience'
+        title='My journey so far.'
+        description='The teams and ventures where I’ve built, managed, and shipped software. Each stop sharpened my craft and taught me how to take ideas from vision to live product.'
+      />
+      <section className='border-t border-border bg-surface/40'>
+        <ol className='mx-auto max-w-6xl space-y-6 px-4 py-20 sm:px-6 sm:py-28'>
+          {experiences.map((experience) => {
+            const current = experience.dateRange.includes('Present');
+            return (
+              // A rail down the left with a dot per role; the current role's dot pulses.
+              <Reveal
+                as='li'
+                key={experience.id}
+                className='relative pl-8 before:absolute before:top-3 before:-bottom-6 before:left-[5px] before:w-px before:bg-border last:before:hidden sm:pl-10'
+              >
+                <span aria-hidden='true' className='absolute top-2 left-0 flex size-[11px]'>
+                  {current && <span className='absolute inline-flex size-full animate-ping rounded-full bg-brand/60' />}
+                  <span
+                    className={cn(
+                      'relative size-[11px] rounded-full',
+                      current ? 'bg-brand-bright' : 'border border-border bg-surface-2'
+                    )}
+                  />
+                </span>
+                <ExperienceCard experience={experience} />
+              </Reveal>
+            );
+          })}
+        </ol>
+      </section>
+    </>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import FadeIn from '@/components/animations/fade-in';
+import Reveal from '@/components/animations/reveal';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef } from 'react';
@@ -14,8 +14,8 @@ function Timeline() {
   };
 
   return (
-    <FadeIn delay={0.3} className='w-full max-w-6xl mt-24 md:mt-36' enableInView>
-      <h2 className='text-3xl md:text-4xl font-bold text-primary-gradient'>My Timeline</h2>
+    <Reveal className='w-full max-w-6xl mt-24 md:mt-36'>
+      <h2 className='title-2 text-gradient'>My Timeline</h2>
       <p className='text-muted-foreground text-sm md:text-base mt-2'>My professional journey in software development.</p>
       <div className='relative container mx-auto mt-8 overflow-x-auto pt-4 no-scrollbar scroll-smooth' ref={ref}>
         <div className='relative flex justify-between min-w-max px-4 md:px-0'>
@@ -25,7 +25,7 @@ function Timeline() {
               <div className='relative flex items-center justify-center w-full h-4 mb-2'>
                 {/* Line */}
                 <div
-                  className={`absolute top-1/2 -translate-y-1/2 h-0.5 bg-gray-200 
+                  className={`absolute top-1/2 -translate-y-1/2 h-0.5 bg-border 
                     ${index === 0 ? 'w-1/2 left-1/2' : ''} 
                     ${index === timelineData.length - 1 ? 'w-1/2 right-1/2' : ''}
                     ${index > 0 && index < timelineData.length - 1 ? 'w-full' : ''}
@@ -33,7 +33,7 @@ function Timeline() {
                 />
 
                 {/* Dot */}
-                <div className={`w-4 h-4 bg-primary rounded-full z-10 ${item.isPresent ? 'animate-ping2s' : ''}`} />
+                <div className={`w-4 h-4 bg-primary rounded-full z-10 ${item.isPresent ? 'animate-ping' : ''}`} />
                 {item.isPresent && <div className='w-4 h-4 bg-primary rounded-full z-10 absolute' />}
               </div>
 
@@ -66,7 +66,7 @@ function Timeline() {
           <ChevronRight className='text-primary' />
         </Button>
       </div>
-    </FadeIn>
+    </Reveal>
   );
 }
 

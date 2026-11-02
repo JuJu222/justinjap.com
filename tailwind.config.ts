@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+const channel = (name: string) => `rgb(var(--${name}) / <alpha-value>)`;
+
 export default {
     darkMode: ["class"],
     content: [
@@ -9,50 +11,54 @@ export default {
   ],
   theme: {
   	extend: {
-      animation: {
-        ping2s: 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+      fontFamily: {
+        sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
       },
   		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+  			background: channel('background'),
+  			foreground: channel('foreground'),
+  			surface: {
+  				DEFAULT: channel('surface'),
+  				'2': channel('surface-2')
+  			},
+  			subtle: channel('subtle'),
+  			faint: channel('faint'),
+  			brand: {
+  				DEFAULT: channel('brand'),
+  				bright: channel('brand-bright')
+  			},
   			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
+  				DEFAULT: channel('card'),
+  				foreground: channel('card-foreground')
   			},
   			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
+  				DEFAULT: channel('popover'),
+  				foreground: channel('popover-foreground')
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				DEFAULT: channel('primary'),
+  				foreground: channel('primary-foreground')
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				DEFAULT: channel('secondary'),
+  				foreground: channel('secondary-foreground')
   			},
   			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
+  				DEFAULT: channel('muted'),
+  				foreground: channel('muted-foreground')
   			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
+  				DEFAULT: channel('accent'),
+  				foreground: channel('accent-foreground')
   			},
   			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
+  				DEFAULT: channel('destructive'),
+  				foreground: channel('destructive-foreground')
   			},
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
-  			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
-  			}
+  			border: 'var(--border)',
+  			input: 'var(--input)',
+  			ring: channel('ring')
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

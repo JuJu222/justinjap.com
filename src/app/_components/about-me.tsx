@@ -1,27 +1,47 @@
-import React from 'react';
-import FadeIn from '@/components/animations/fade-in';
 import Image from 'next/image';
+import Reveal from '@/components/animations/reveal';
+import RevealText from '@/components/animations/reveal-text';
+import { Eyebrow } from '@/components/section-heading';
 import { aboutMeData } from '@/lib/data';
 
 function AboutMe() {
   return (
-    <FadeIn delay={0.3} className='w-full max-w-6xl mt-24 md:mt-36' enableInView>
-      <div className='flex flex-col md:flex-row gap-8 lg:gap-16'>
-        <div className='w-full md:w-1/3'>
-          <div className='relative md:aspect-square rounded-2xl overflow-hidden h-60 md:h-auto'>
-            <Image src={aboutMeData.image} alt='Profile picture' fill className='object-cover' />
+    <section className='border-t border-border'>
+      <div className='mx-auto grid max-w-6xl gap-12 px-4 py-24 sm:px-6 sm:py-32 lg:grid-cols-[2fr_3fr] lg:items-center lg:gap-16'>
+        <Reveal
+          y={40}
+          className='panel relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl lg:max-w-none'
+        >
+          <Image
+            src={aboutMeData.image}
+            alt='Justin Jap'
+            fill
+            sizes='(min-width: 1024px) 400px, 384px'
+            className='object-cover'
+          />
+        </Reveal>
+
+        <div>
+          <Reveal>
+            <Eyebrow>About me</Eyebrow>
+          </Reveal>
+          <RevealText
+            as='h2'
+            text='Building things that make a difference.'
+            gradient
+            delay={0.08}
+            className='title-2 mt-4 text-balance'
+          />
+          <div className='mt-6 max-w-xl space-y-4 text-[15px] leading-relaxed text-pretty text-muted-foreground'>
+            {aboutMeData.paragraphs.map((paragraph, i) => (
+              <Reveal key={i} as='p' delay={0.2 + i * 0.08}>
+                {paragraph}
+              </Reveal>
+            ))}
           </div>
         </div>
-        <div className='w-full md:w-2/3 space-y-4'>
-          <h2 className='text-3xl md:text-4xl font-bold text-primary-gradient'>About Me</h2>
-          {aboutMeData.paragraphs.map((paragraph, index) => (
-            <p key={index} className='text-sm md:text-base text-muted-foreground leading-relaxed'>
-              {paragraph}
-            </p>
-          ))}
-        </div>
       </div>
-    </FadeIn>
+    </section>
   );
 }
 

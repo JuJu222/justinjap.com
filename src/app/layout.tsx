@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Geist_Mono, Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from './_components/navbar';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -8,8 +8,14 @@ import Script from 'next/script';
 import { ThemeProvider } from '@/components/theme-provider';
 
 const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin'],
   display: 'swap',
+});
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
@@ -58,11 +64,13 @@ export default function RootLayout({
   };
 
   return (
-    <html lang='en' suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang='en' className={`${inter.variable} ${geistMono.variable} h-full`} suppressHydrationWarning>
+      <body className='flex min-h-full flex-col font-sans'>
         <ThemeProvider>
           <Navbar />
-          <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
+          <TooltipProvider delayDuration={0}>
+            <main className='flex-1'>{children}</main>
+          </TooltipProvider>
           <Footer />
         </ThemeProvider>
       </body>

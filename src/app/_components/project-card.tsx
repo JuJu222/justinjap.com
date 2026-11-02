@@ -1,60 +1,43 @@
-"use client";
-
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { GlowingEffect } from '@/components/glowing-effect';
-import { Project } from '@/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import Reveal from '@/components/animations/reveal';
+import { Badge } from '@/components/ui/badge';
+import { Project } from '@/lib/constants';
 
-function ProjectCard({
-  project,
-}: {
-  project: Project;
-}) {
+function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   return (
-    <Link href={`/projects/${project.id}`}>
-      <div className='relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3'>
-        <GlowingEffect
-          blur={0}
-          borderWidth={3}
-          spread={80}
-          glow={true}
-          disabled={false}
-          proximity={64}
-          inactiveZone={0.01}
-        />
-        <Card className='w-full hover:shadow-lg dark:hover:drop-shadow-[0_4px_16px_rgba(255,255,255,0.15)] dark:drop-shadow-[0_4px_16px_rgba(255,255,255,0.05)] transition-shadow duration-300 cursor-pointer border-0 relative h-full overflow-hidden rounded-xl'>
-          <CardHeader className='p-0 pb-6'>
-            <div className='relative w-full h-52 rounded-t-xl overflow-hidden border-b-8 border-primary'>
-              <Image src={project.mainImage} alt='hero' fill className='object-cover object-top' />
-            </div>
-          </CardHeader>
-          <CardContent className='space-y-3 p-6'>
-            <CardTitle>{project.title}</CardTitle>
-            <CardDescription className='line-clamp-3'>{project.description}</CardDescription>
-            <div className='flex items-center gap-2'>
-              {project.techStack.map((tech) => (
-                <Tooltip key={tech.name} delayDuration={0}>
-                  <TooltipTrigger>
-                    <Image
-                      src={tech.icon}
-                      alt={tech.name}
-                      width={tech.size}
-                      height={tech.size}
-                      className='dark:brightness-150'
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{tech.name}</p>
-                  </TooltipContent>
-                </Tooltip>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </Link>
+    <Reveal as='li' delay={(index % 3) * 0.08} className='h-full'>
+      <Link
+        href={`/projects/${project.id}`}
+        className='panel group flex h-full flex-col overflow-hidden rounded-2xl transition-colors hover:border-foreground/15'
+      >
+        <div className='relative aspect-[16/10] overflow-hidden border-b border-border'>
+          <Image
+            src={project.mainImage}
+            alt={`${project.title} screenshot`}
+            fill
+            sizes='(min-width: 1024px) 368px, (min-width: 768px) 50vw, 100vw'
+            className='object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]'
+          />
+        </div>
+        <div className='flex flex-1 flex-col p-6'>
+          <p className='text-[17px] font-medium tracking-[-0.01em]'>{project.title}</p>
+          <p className='mt-2 line-clamp-3 text-sm leading-relaxed text-muted-foreground'>{project.description}</p>
+          <div className='mt-5 flex flex-wrap gap-1.5'>
+            {project.techStack.map((tech) => (
+              <Badge key={tech.name} variant='outline'>
+                {tech.name}
+              </Badge>
+            ))}
+          </div>
+          <p className='mt-auto inline-flex items-center gap-1 pt-6 text-[13px] text-muted-foreground transition-colors group-hover:text-foreground'>
+            Read more
+            <ArrowRight className='size-3.5 transition-transform group-hover:translate-x-0.5' />
+          </p>
+        </div>
+      </Link>
+    </Reveal>
   );
 }
 
