@@ -38,3 +38,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# linkedin banner renders
+/scripts/linkedin-banner/out/

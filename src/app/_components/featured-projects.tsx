@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import Reveal from '@/components/animations/reveal';
 import SectionHeading from '@/components/section-heading';
+import TechStackIcons from '@/components/tech-stack';
 import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
 import { Project, getProjectSummary, projects } from '@/lib/constants';
@@ -35,13 +36,7 @@ function FeaturedProject({ project }: { project: Project }) {
           <p className='mt-4 line-clamp-4 text-[15px] leading-relaxed text-pretty text-muted-foreground'>
             {getProjectSummary(project)}
           </p>
-          <div className='mt-6 flex flex-wrap gap-1.5'>
-            {project.techStack.map((tech) => (
-              <Badge key={tech.name} variant='outline'>
-                {tech.name}
-              </Badge>
-            ))}
-          </div>
+          <TechStackIcons techStack={project.techStack} className='mt-6' />
           <div className='mt-8 flex flex-wrap items-center gap-3'>
             <Link href={`/projects/${project.id}`} className={buttonVariants({ size: 'lg' })}>
               Read more

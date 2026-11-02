@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import Reveal from '@/components/animations/reveal';
-import { Badge } from '@/components/ui/badge';
+import TechStackIcons from '@/components/tech-stack';
 import { Project } from '@/lib/constants';
 
 function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
@@ -24,13 +24,7 @@ function ProjectCard({ project, index = 0 }: { project: Project; index?: number 
         <div className='flex flex-1 flex-col p-6'>
           <p className='text-[17px] font-medium tracking-[-0.01em]'>{project.title}</p>
           <p className='mt-2 line-clamp-3 text-sm leading-relaxed text-muted-foreground'>{project.description}</p>
-          <div className='mt-5 flex flex-wrap gap-1.5'>
-            {project.techStack.map((tech) => (
-              <Badge key={tech.name} variant='outline'>
-                {tech.name}
-              </Badge>
-            ))}
-          </div>
+          <TechStackIcons techStack={project.techStack} className='mt-5' />
           <p className='mt-auto inline-flex items-center gap-1 pt-6 text-[13px] text-muted-foreground transition-colors group-hover:text-foreground'>
             Read more
             <ArrowRight className='size-3.5 transition-transform group-hover:translate-x-0.5' />

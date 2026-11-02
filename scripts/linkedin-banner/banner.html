@@ -1,0 +1,117 @@
+<!doctype html>
+<html class="dark">
+<head>
+<meta charset="utf-8">
+<!-- LinkedIn banner, 1584x396. Open with #light for the light theme. Render with ./render.sh. -->
+<script>if (location.hash === '#light') document.documentElement.classList.remove('dark');</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Geist+Mono:wght@400;500&display=block" rel="stylesheet">
+<style>
+  :root {
+    --background: 252 252 253; --foreground: 8 9 10; --surface: 246 247 248;
+    --muted-foreground: 98 102 109; --faint: 138 143 152; --brand-bright: 52 58 70;
+    --border: rgb(0 0 0 / 0.08); --grid-line: rgb(0 0 0 / 0.06); --glow: rgb(0 0 0 / 0.05);
+    --panel-sheen: rgb(255 255 255 / 0.8);
+    --panel-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 20px 60px -30px rgb(0 0 0 / 0.18);
+    --icon-filter: brightness(0) opacity(0.62);
+    --lede: 74 78 86;
+  }
+  .dark {
+    --background: 8 9 10; --foreground: 247 248 248; --surface: 15 16 17;
+    --muted-foreground: 138 143 152; --faint: 98 102 109; --brand-bright: 214 219 227;
+    --border: rgb(255 255 255 / 0.08); --grid-line: rgb(255 255 255 / 0.05); --glow: rgb(255 255 255 / 0.08);
+    --panel-sheen: rgb(255 255 255 / 0.04);
+    --panel-shadow: 0 20px 60px -30px rgb(0 0 0 / 0.8);
+    --icon-filter: brightness(0) invert(1) opacity(0.72);
+    --lede: 172 177 186;
+  }
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1584px; height: 396px; overflow: hidden; }
+  body {
+    position: relative;
+    background: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-family: Inter, system-ui, sans-serif;
+    font-feature-settings: 'cv01', 'ss03';
+    -webkit-font-smoothing: antialiased;
+  }
+  .glow {
+    position: absolute; inset: -260px 0 auto 0; height: 760px;
+    background: radial-gradient(45% 50% at 58% 40%, var(--glow), transparent 70%);
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+    background-position: 20px 10px;
+    mask-image: radial-gradient(ellipse 60% 90% at 60% 40%, black 25%, transparent 75%);
+  }
+  .content {
+    position: absolute; left: 448px; top: 0; bottom: 0;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 24px; font-weight: 500; color: rgb(var(--lede));
+  }
+  .dot { width: 9px; height: 9px; border-radius: 999px; background: rgb(var(--brand-bright)); }
+  h1 {
+    margin-top: 12px;
+    font-size: 108px; line-height: 1.04; font-weight: 510; letter-spacing: -0.032em;
+    background: linear-gradient(to right bottom, rgb(var(--foreground)) 30%, rgb(var(--foreground) / 0.38));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    padding-bottom: 6px;
+  }
+  .lede {
+    margin-top: 10px;
+    font-size: 30px; line-height: 1.4; color: rgb(var(--lede));
+  }
+  .url {
+    margin-top: 20px; display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Geist Mono', ui-monospace, monospace; font-size: 22px;
+    color: rgb(var(--faint));
+  }
+  .url b { color: rgb(var(--foreground)); font-weight: 500; }
+  .panel {
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--panel-sheen), transparent), rgb(var(--surface));
+    box-shadow: inset 0 1px 0 0 var(--panel-sheen), var(--panel-shadow);
+  }
+  .stack {
+    /* Sits in the strip above the LinkedIn avatar (x 49–367, y 203+). */
+    position: absolute; left: 70px; top: 30px;
+  }
+  .tiles { display: grid; grid-template-columns: repeat(4, 60px); gap: 12px; }
+  .tile {
+    width: 60px; height: 60px; border-radius: 14px;
+    display: grid; place-items: center;
+  }
+  .tile img { width: 28px; height: 28px; filter: var(--icon-filter); }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="grid"></div>
+
+  <div class="content">
+    <div class="eyebrow"><span class="dot"></span>Full Stack Engineer @ IntentAI</div>
+    <h1>Hi, I'm Justin Jap.</h1>
+    <p class="lede">I'm a software engineer who loves to build things that help people.</p>
+    <div class="url"><b>justinjap.com</b> ↗</div>
+  </div>
+
+  <div class="stack">
+    <div class="tiles">
+      <div class="tile panel"><img src="../../public/icons/swift.svg"></div>
+      <div class="tile panel"><img src="../../public/icons/nextjs.svg"></div>
+      <div class="tile panel"><img src="../../public/icons/nestjs.svg"></div>
+      <div class="tile panel"><img src="../../public/icons/postgresql.svg"></div>
+      <div class="tile panel"><img src="../../public/icons/prisma.svg"></div>
+      <div class="tile panel"><img src="../../public/icons/docker.svg"></div>
+      <div class="tile panel"><img src="claude.svg"></div>
+      <div class="tile panel"><img src="../../public/icons/motion.svg"></div>
+    </div>
+  </div>
+</body>
+</html>

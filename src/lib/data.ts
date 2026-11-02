@@ -100,7 +100,7 @@ export const awardsData: AwardItem[] = [
 export const aboutMeData = {
   image: 'https://d249xjcvkuj8xb.cloudfront.net/justinjap.com/me.jpg',
   paragraphs: [
-    "Hi there! I'm a passionate software developer with a love for creating solutions to complex problems. Currently, I work as a Full Stack Engineer at Unit Network. I graduated in 2024 with a Bachelor of Science in Computer Science (Informatics), achieving a GPA of 3.98 and being awarded Best Academic Performance for attaining the highest GPA in my batch.",
+    "Hi there! I'm a passionate software developer with a love for creating solutions to complex problems. Currently, I work as a Full Stack Engineer at IntentAI. I graduated in 2024 with a Bachelor of Science in Computer Science (Informatics), achieving a GPA of 3.98 and being awarded Best Academic Performance for attaining the highest GPA in my batch.",
     "I have a deep love for developing applications, especially web apps. While I have also delved into mobile app development through the Apple Developer Academy and explored AI, my main focus is on full-stack development. I enjoy building projects that can make a tangible difference in people's lives.",
     "When I'm not coding, you can find me exploring new technologies. I'm a firm believer in continuous learning and always excited to discover new ways to solve problems by technology.",
   ],

@@ -59,7 +59,7 @@ export default function RootLayout({
     jobTitle: 'Full Stack Engineer',
     worksFor: {
       '@type': 'Organization',
-      name: 'Unit Network',
+      name: 'IntentAI',
     },
   };
 

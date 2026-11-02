@@ -7,6 +7,8 @@ export interface ExperienceEntry {
   id: string;
   role: string;
   company: string;
+  // Square company logo in /public/images/companies; cards without one show a monogram.
+  logo?: string;
   contract: string;
   dateRange: string;
   duration: string;
@@ -20,9 +22,30 @@ export interface ExperienceEntry {
 
 export const experiences: ExperienceEntry[] = [
   {
+    id: 'intentai',
+    role: 'Full Stack Engineer',
+    company: 'IntentAI',
+    logo: '/images/companies/intentai.jpg',
+    contract: 'Contract',
+    dateRange: 'Mar 2025 — Present',
+    duration: '1 yr 9 mos',
+    location: 'Singapore · Remote',
+    summary:
+      'Building AI-powered applications, agent workflows, and internal tooling for an enterprise conversational AI platform.',
+    highlights: [
+      'Developed AI-powered applications and internal tooling for an enterprise conversational AI platform using Vue, TypeScript, and FastAPI (REST API and Server-Sent Events).',
+      'Maintained backend services for AI agent workflows, integrating LangChain and Elasticsearch for scalable retrieval and real-time AI interactions.',
+      'Implemented channel messaging integrations (WhatsApp, email), enabling ~3,000 monthly user conversation sessions.',
+      'Developed a PostgreSQL-backed persistence layer, supporting ~20,000 workflow node executions per month.',
+      'Increased system reliability by introducing comprehensive unit testing across services, raising coverage to 80%+.',
+    ],
+    skills: ['Vue', 'TypeScript', 'FastAPI', 'LangChain', 'Elasticsearch', 'PostgreSQL'],
+  },
+  {
     id: 'unit-network',
     role: 'Full Stack Engineer',
     company: 'Unit Network',
+    logo: '/images/companies/unit-network.jpg',
     contract: 'Contract',
     dateRange: 'Aug 2024 — Present',
     duration: '1 yr 4 mos',

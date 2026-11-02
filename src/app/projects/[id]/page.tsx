@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import Reveal from '@/components/animations/reveal';
 import RevealText from '@/components/animations/reveal-text';
 import { Eyebrow } from '@/components/section-heading';
+import { TechIcon } from '@/components/tech-stack';
 import { buttonVariants } from '@/components/ui/button';
 import { getProjectSummary, projects } from '@/lib/constants';
 import { cn } from '@/lib/utils';
@@ -133,19 +133,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               {project.techStack.map((tech) => (
                 <li key={tech.name} className='flex items-center gap-3 py-3 text-sm text-muted-foreground'>
                   <span className='inline-flex size-7 items-center justify-center rounded-md border border-border bg-foreground/[0.04]'>
-                    {tech.icon ? (
-                      <Image
-                        src={tech.icon}
-                        alt=''
-                        width={14}
-                        height={14}
-                        className='size-3.5 object-contain opacity-80 brightness-0 dark:invert'
-                      />
-                    ) : (
-                      <span aria-hidden='true' className='font-mono text-[11px] font-semibold text-subtle'>
-                        {tech.name[0]}
-                      </span>
-                    )}
+                    <TechIcon tech={tech} className='size-3.5' />
                   </span>
                   {tech.name}
                 </li>

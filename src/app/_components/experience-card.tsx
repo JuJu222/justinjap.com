@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { ExperienceEntry } from '@/lib/experiences';
 
@@ -5,14 +6,25 @@ export default function ExperienceCard({ experience }: { experience: ExperienceE
   return (
     <article className='panel rounded-2xl p-6 sm:p-8'>
       <div className='flex flex-wrap items-start justify-between gap-x-6 gap-y-3'>
-        <div>
-          <p className='text-xs text-faint'>
-            {experience.dateRange} · {experience.duration}
-          </p>
-          <h3 className='mt-2 text-[19px] font-medium tracking-[-0.015em]'>{experience.role}</h3>
-          <p className='mt-1 text-sm text-muted-foreground'>
-            {experience.company} · {experience.location}
-          </p>
+        <div className='flex items-start gap-4'>
+          <span className='relative mt-0.5 flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border bg-foreground/[0.04]'>
+            {experience.logo ? (
+              <Image src={experience.logo} alt={`${experience.company} logo`} fill sizes='48px' className='object-cover' />
+            ) : (
+              <span aria-hidden='true' className='font-mono text-sm font-semibold text-subtle'>
+                {experience.company[0]}
+              </span>
+            )}
+          </span>
+          <div>
+            <p className='text-xs text-faint'>
+              {experience.dateRange} · {experience.duration}
+            </p>
+            <h3 className='mt-2 text-[19px] font-medium tracking-[-0.015em]'>{experience.role}</h3>
+            <p className='mt-1 text-sm text-muted-foreground'>
+              {experience.company} · {experience.location}
+            </p>
+          </div>
         </div>
         <Badge>{experience.contract}</Badge>
       </div>
