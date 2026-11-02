@@ -2,18 +2,51 @@ export interface Project {
   id: string;
   title: string;
   description: string;
+  // Short pitch shown on the featured card and the project page; see getProjectSummary.
+  summary?: string;
   type: 'work' | 'personal';
   mainImage: string;
+  // Project card image; falls back to mainImage.
+  thumbnail?: string;
   galleryImages: string[];
   url?: string;
   techStack: {
     name: string;
-    icon: string;
+    // Single-colour SVG in /public/icons; techs without one show a monogram.
+    icon?: string;
     size: number;
   }[];
 }
 
 export const projects: Project[] = [
+  {
+    id: '6',
+    title: 'Throttlr',
+    type: 'personal',
+    summary:
+      "Cap speeds, block traffic or set data quotas for any app on your Mac. Watch every app's bandwidth live, right from the menu bar.",
+    description:
+      "Throttlr is a macOS app that limits app bandwidth. It lets you cap download and upload speeds, block network access, or set data quotas that reset on your schedule for any app on your Mac, and shows every app's bandwidth live right from the menu bar. Profiles switch your rules automatically based on the network you're connected to, and monthly and yearly usage history shows exactly where your data went. Traffic is shaped on-device through a Network Extension, so your stats never leave your Mac. I designed and built the whole product, from the native SwiftUI app and proxy extension to the licensing API and the website. Throttlr is available on the Mac App Store and as a direct download, free for monitoring with Pro for throttling, blocking and quotas.",
+    mainImage: '/images/projects/throttlr/main.png',
+    thumbnail: '/images/projects/throttlr/thumbnail.png',
+    galleryImages: [
+      '/images/projects/throttlr/usage.png',
+      '/images/projects/throttlr/menu-bar.png',
+      '/images/projects/throttlr/profiles.png',
+    ],
+    url: 'https://www.throttlr.app',
+    techStack: [
+      { name: 'Swift', icon: '/icons/swift.svg', size: 20 },
+      { name: 'SwiftUI', icon: '/icons/swift.svg', size: 20 },
+      { name: 'Network Extension', icon: '/icons/network-extension.svg', size: 20 },
+      { name: 'StoreKit', icon: '/icons/storekit.svg', size: 20 },
+      { name: 'Next.js', icon: '/icons/nextjs.svg', size: 20 },
+      { name: 'Tailwind CSS', icon: '/icons/tailwind.svg', size: 20 },
+      { name: 'NestJS', icon: '/icons/nestjs.svg', size: 20 },
+      { name: 'Prisma', icon: '/icons/prisma.svg', size: 20 },
+      { name: 'PostgreSQL', icon: '/icons/postgresql.svg', size: 20 },
+    ],
+  },
   {
     id: '1',
     title: 'Walletize',
@@ -122,3 +155,8 @@ export const projects: Project[] = [
     ],
   },
 ];
+
+// Short pitch for a project; the first sentence of its description when there's no summary.
+export function getProjectSummary(project: Project) {
+  return project.summary ?? project.description.split(/(?<=\.)\s/)[0];
+}

@@ -10,11 +10,11 @@ function ProjectCard({ project, index = 0 }: { project: Project; index?: number 
     <Reveal as='li' delay={(index % 3) * 0.08} className='h-full'>
       <Link
         href={`/projects/${project.id}`}
-        className='panel group flex h-full flex-col overflow-hidden rounded-2xl transition-colors hover:border-foreground/15'
+        className='panel group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl transition-colors hover:border-foreground/15'
       >
         <div className='relative aspect-[16/10] overflow-hidden border-b border-border'>
           <Image
-            src={project.mainImage}
+            src={project.thumbnail ?? project.mainImage}
             alt={`${project.title} screenshot`}
             fill
             sizes='(min-width: 1024px) 368px, (min-width: 768px) 50vw, 100vw'

@@ -49,11 +49,13 @@ export default function RevealText({
     const measure = () => {
       let line = -1;
       let lineTop = -Infinity;
-      const spans = el.querySelectorAll<HTMLElement>('[data-word]');
+      const spans = Array.from(el.querySelectorAll<HTMLElement>('[data-word]'));
       setLayout({
         width: el.clientWidth,
-        height: el.clientHeight,
-        words: Array.from(spans, (s) => {
+        // Reach the bottom of the lowest word, descender padding included, so
+        // the gradient doesn't tile and paint a bright strip under descenders.
+        height: Math.max(el.clientHeight, ...spans.map((s) => s.offsetTop + s.offsetHeight)),
+        words: spans.map((s) => {
           if (s.offsetTop > lineTop + 2) {
             line++;
             lineTop = s.offsetTop;

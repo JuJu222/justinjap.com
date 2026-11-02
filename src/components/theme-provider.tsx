@@ -7,7 +7,7 @@ type Theme = 'light' | 'dark';
 
 export function ThemeProvider({ children }: PropsWithChildren) {
   return (
-    <NextThemesProvider attribute='class' defaultTheme='system' enableSystem>
+    <NextThemesProvider attribute='class' defaultTheme='dark' enableSystem={false}>
       {children}
     </NextThemesProvider>
   );

@@ -7,7 +7,8 @@ import Reveal from '@/components/animations/reveal';
 import RevealText from '@/components/animations/reveal-text';
 import { Eyebrow } from '@/components/section-heading';
 import { buttonVariants } from '@/components/ui/button';
-import { projects } from '@/lib/constants';
+import { getProjectSummary, projects } from '@/lib/constants';
+import { cn } from '@/lib/utils';
 import ZoomableImage from './zoomable-image';
 
 type Props = {
@@ -67,8 +68,15 @@ export default async function ProjectDetailPage({ params }: Props) {
               delay={0.12}
               className='title-1 mt-4 text-balance'
             />
+            <RevealText
+              text={getProjectSummary(project)}
+              onMount
+              delay={0.3}
+              stagger={0.06}
+              className='mt-6 max-w-xl text-[17px] leading-relaxed text-pretty text-muted-foreground'
+            />
             {project.url && (
-              <Reveal onMount delay={0.3} className='mt-10'>
+              <Reveal onMount delay={0.45} className='mt-10'>
                 <Link
                   href={project.url}
                   target='_blank'
@@ -85,7 +93,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           {/* Grey stage the screenshot sits on: background at the top, lit from below. */}
           <Reveal
             onMount
-            delay={0.4}
+            delay={0.55}
             y={40}
             className='relative -mx-4 mt-16 overflow-hidden px-4 pb-14 sm:-mx-6 sm:rounded-b-[2rem] sm:px-6 lg:-mx-16 lg:px-16 xl:-mx-28 xl:px-28'
           >
@@ -102,7 +110,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               alt={`${project.title} screenshot`}
               sizes='(min-width: 1152px) 1088px, 100vw'
               priority
-              className='mx-auto aspect-video max-w-5xl rounded-xl border border-border shadow-[0_40px_120px_-30px_rgb(0_0_0/0.6)]'
+              className='mx-auto max-w-5xl rounded-xl border border-border shadow-[0_40px_120px_-30px_rgb(0_0_0/0.6)]'
             />
           </Reveal>
         </div>
@@ -125,13 +133,19 @@ export default async function ProjectDetailPage({ params }: Props) {
               {project.techStack.map((tech) => (
                 <li key={tech.name} className='flex items-center gap-3 py-3 text-sm text-muted-foreground'>
                   <span className='inline-flex size-7 items-center justify-center rounded-md border border-border bg-foreground/[0.04]'>
-                    <Image
-                      src={tech.icon}
-                      alt=''
-                      width={14}
-                      height={14}
-                      className='size-3.5 object-contain opacity-80 brightness-0 dark:invert'
-                    />
+                    {tech.icon ? (
+                      <Image
+                        src={tech.icon}
+                        alt=''
+                        width={14}
+                        height={14}
+                        className='size-3.5 object-contain opacity-80 brightness-0 dark:invert'
+                      />
+                    ) : (
+                      <span aria-hidden='true' className='font-mono text-[11px] font-semibold text-subtle'>
+                        {tech.name[0]}
+                      </span>
+                    )}
                   </span>
                   {tech.name}
                 </li>
@@ -147,17 +161,25 @@ export default async function ProjectDetailPage({ params }: Props) {
             <Reveal>
               <Eyebrow>Gallery</Eyebrow>
             </Reveal>
-            <ul className='mt-8 grid gap-4 sm:grid-cols-2'>
-              {project.galleryImages.map((image, i) => (
-                <Reveal as='li' key={image} delay={(i % 2) * 0.08}>
-                  <ZoomableImage
-                    src={image}
-                    alt={`${project.title} gallery image ${i + 1}`}
-                    sizes='(min-width: 1152px) 544px, (min-width: 640px) 50vw, 100vw'
-                    className='panel aspect-video rounded-2xl'
-                  />
-                </Reveal>
-              ))}
+            <ul className='mt-8 grid items-start gap-4 sm:grid-cols-2'>
+              {project.galleryImages.map((image, i) => {
+                // With an odd count, the first image spans the row so the grid has no gap.
+                const wide = i === 0 && project.galleryImages.length % 2 === 1;
+                return (
+                  <Reveal as='li' key={image} delay={(i % 2) * 0.08} className={cn(wide && 'sm:col-span-2')}>
+                    <ZoomableImage
+                      src={image}
+                      alt={`${project.title} gallery image ${i + 1}`}
+                      sizes={
+                        wide
+                          ? '(min-width: 1152px) 1104px, 100vw'
+                          : '(min-width: 1152px) 544px, (min-width: 640px) 50vw, 100vw'
+                      }
+                      className='panel rounded-2xl'
+                    />
+                  </Reveal>
+                );
+              })}
             </ul>
           </div>
         </section>
