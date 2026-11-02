@@ -16,7 +16,6 @@ env:
   REGISTRIES: |
     ghcr.io
     registry1.justinjap.com
-    registry2.justinjap.com
 
 jobs:
   docker:
